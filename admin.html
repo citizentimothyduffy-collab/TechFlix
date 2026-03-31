@@ -62,9 +62,15 @@
             color: #ff0080;
         }
     </style>
+    <script>
+        if (localStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
 </head>
 <body>
     <h1>Admin Panel</h1>
+    <button id="logoutBtn" style="float: right; margin-bottom: 20px;">Logout</button>
     <form id="movieForm">
         <h2>Add Movie</h2>
         <label for="movieTitle">Title:</label>
@@ -95,6 +101,10 @@
     </form>
     <a href="index.html" class="back-link">Back to Main Site</a>
     <script>
+        if (localStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
         function loadData() {
             return {
                 movies: JSON.parse(localStorage.getItem('movies')) || [],
@@ -121,18 +131,9 @@
             this.reset();
         });
 
-        document.getElementById('tvForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const title = document.getElementById('tvTitle').value;
-            const genre = document.getElementById('tvGenre').value;
-            const year = document.getElementById('tvYear').value;
-            const seasons = document.getElementById('tvSeasons').value;
-            const desc = document.getElementById('tvDesc').value;
-            const data = loadData();
-            data.tvShows.push({ title, genre, year, seasons, desc });
-            saveData(data);
-            alert('TV Show added!');
-            this.reset();
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = 'index.html';
         });
     </script>
 </body>
