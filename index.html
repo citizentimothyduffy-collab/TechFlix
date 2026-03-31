@@ -18,6 +18,12 @@
             text-align: center;
             padding: 2rem;
             box-shadow: 0 0 20px rgba(255, 0, 128, 0.5);
+            position: relative;
+        }
+        .search-bar {
+            position: absolute;
+            top: 10px;
+            left: 10px;
         }
         nav {
             background-color: #1a1a2e;
@@ -103,13 +109,16 @@
 </head>
 <body>
     <header>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for movies or TV shows...">
+            <button>Search</button>
+        </div>
         <h1>TechFlix: Movies & TV Shows</h1>
         <p>Your futuristic source for entertainment</p>
     </header>
     <nav>
         <a href="#movies">Movies</a>
         <a href="#tv-shows">TV Shows</a>
-        <a href="#search">Search</a>
         <a href="admin.html">Admin</a>
     </nav>
     <main>
@@ -147,11 +156,6 @@
                 </div>
             </div>
         </section>
-        <section id="search">
-            <h2>Search</h2>
-            <input type="text" placeholder="Search for movies or TV shows...">
-            <button>Search</button>
-        </section>
     </main>
     <footer>
         <p>&copy; 2026 TechFlix</p>
@@ -166,14 +170,22 @@
             movies.forEach(movie => {
                 const item = document.createElement('div');
                 item.className = 'item';
-                item.innerHTML = `<h3>${movie.title}</h3><p><strong>Genre:</strong> ${movie.genre}</p><p><strong>Year:</strong> ${movie.year}</p><p><strong>Rating:</strong> ${movie.rating}</p><p>${movie.desc}</p>`;
+                let html = `<h3>${movie.title}</h3><p><strong>Genre:</strong> ${movie.genre}</p><p><strong>Year:</strong> ${movie.year}</p><p><strong>Rating:</strong> ${movie.rating}</p><p>${movie.desc}</p>`;
+                if (movie.video) {
+                    html += `<video controls style="width:100%; margin-top:10px;"><source src="${movie.video}" type="video/mp4"></video>`;
+                }
+                item.innerHTML = html;
                 movieList.appendChild(item);
             });
 
             tvShows.forEach(tv => {
                 const item = document.createElement('div');
                 item.className = 'item';
-                item.innerHTML = `<h3>${tv.title}</h3><p><strong>Genre:</strong> ${tv.genre}</p><p><strong>Year:</strong> ${tv.year}</p><p><strong>Seasons:</strong> ${tv.seasons}</p><p>${tv.desc}</p>`;
+                let html = `<h3>${tv.title}</h3><p><strong>Genre:</strong> ${tv.genre}</p><p><strong>Year:</strong> ${tv.year}</p><p><strong>Seasons:</strong> ${tv.seasons}</p><p>${tv.desc}</p>`;
+                if (tv.video) {
+                    html += `<video controls style="width:100%; margin-top:10px;"><source src="${tv.video}" type="video/mp4"></video>`;
+                }
+                item.innerHTML = html;
                 tvList.appendChild(item);
             });
         }

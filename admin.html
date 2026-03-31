@@ -83,6 +83,8 @@
         <input type="text" id="movieRating" required>
         <label for="movieDesc">Description:</label>
         <textarea id="movieDesc" required></textarea>
+        <label for="movieVideo">Video URL (optional):</label>
+        <input type="url" id="movieVideo" placeholder="https://example.com/video.mp4">
         <button type="submit">Add Movie</button>
     </form>
     <form id="tvForm">
@@ -97,6 +99,8 @@
         <input type="number" id="tvSeasons" required>
         <label for="tvDesc">Description:</label>
         <textarea id="tvDesc" required></textarea>
+        <label for="tvVideo">Video URL (optional):</label>
+        <input type="url" id="tvVideo" placeholder="https://example.com/video.mp4">
         <button type="submit">Add TV Show</button>
     </form>
     <a href="index.html" class="back-link">Back to Main Site</a>
@@ -124,10 +128,26 @@
             const year = document.getElementById('movieYear').value;
             const rating = document.getElementById('movieRating').value;
             const desc = document.getElementById('movieDesc').value;
+            const video = document.getElementById('movieVideo').value;
             const data = loadData();
-            data.movies.push({ title, genre, year, rating, desc });
+            data.movies.push({ title, genre, year, rating, desc, video });
             saveData(data);
             alert('Movie added!');
+            this.reset();
+        });
+
+        document.getElementById('tvForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('tvTitle').value;
+            const genre = document.getElementById('tvGenre').value;
+            const year = document.getElementById('tvYear').value;
+            const seasons = document.getElementById('tvSeasons').value;
+            const desc = document.getElementById('tvDesc').value;
+            const video = document.getElementById('tvVideo').value;
+            const data = loadData();
+            data.tvShows.push({ title, genre, year, seasons, desc, video });
+            saveData(data);
+            alert('TV Show added!');
             this.reset();
         });
 
