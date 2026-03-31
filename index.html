@@ -110,6 +110,7 @@
         <a href="#movies">Movies</a>
         <a href="#tv-shows">TV Shows</a>
         <a href="#search">Search</a>
+        <a href="admin.html">Admin</a>
     </nav>
     <main>
         <section id="movies">
@@ -155,5 +156,29 @@
     <footer>
         <p>&copy; 2026 TechFlix</p>
     </footer>
+    <script>
+        function loadContent() {
+            const movies = JSON.parse(localStorage.getItem('movies')) || [];
+            const tvShows = JSON.parse(localStorage.getItem('tvShows')) || [];
+            const movieList = document.querySelector('.movie-list');
+            const tvList = document.querySelector('.tv-list');
+
+            movies.forEach(movie => {
+                const item = document.createElement('div');
+                item.className = 'item';
+                item.innerHTML = `<h3>${movie.title}</h3><p><strong>Genre:</strong> ${movie.genre}</p><p><strong>Year:</strong> ${movie.year}</p><p><strong>Rating:</strong> ${movie.rating}</p><p>${movie.desc}</p>`;
+                movieList.appendChild(item);
+            });
+
+            tvShows.forEach(tv => {
+                const item = document.createElement('div');
+                item.className = 'item';
+                item.innerHTML = `<h3>${tv.title}</h3><p><strong>Genre:</strong> ${tv.genre}</p><p><strong>Year:</strong> ${tv.year}</p><p><strong>Seasons:</strong> ${tv.seasons}</p><p>${tv.desc}</p>`;
+                tvList.appendChild(item);
+            });
+        }
+
+        window.addEventListener('load', loadContent);
+    </script>
 </body>
 </html>
