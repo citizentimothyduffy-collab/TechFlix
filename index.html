@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies & TV Shows</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+            color: #00ffcc;
+        }
+        header {
+            background: linear-gradient(90deg, #ff0080, #8000ff);
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.5);
+        }
+        nav {
+            background-color: #1a1a2e;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 2px solid #00ffcc;
+        }
+        nav a {
+            color: #00ffcc;
+            margin: 0 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ff0080;
+            text-shadow: 0 0 10px #ff0080;
+        }
+        main {
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 3rem;
+        }
+        h1, h2 {
+            color: #ffffff;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+        .movie-list, .tv-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #00ffcc;
+            border-radius: 10px;
+            padding: 1.5rem;
+            width: 250px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
+        }
+        .item h3 {
+            margin-top: 0;
+            color: #ff0080;
+        }
+        footer {
+            background: linear-gradient(90deg, #8000ff, #ff0080);
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 0 20px rgba(128, 0, 255, 0.5);
+        }
+        input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #00ffcc;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #00ffcc;
+            width: 200px;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: #ff0080;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #8000ff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TechFlix: Movies & TV Shows</h1>
+        <p>Your futuristic source for entertainment</p>
+    </header>
+    <nav>
+        <a href="#movies">Movies</a>
+        <a href="#tv-shows">TV Shows</a>
+        <a href="#search">Search</a>
+    </nav>
+    <main>
+        <section id="movies">
+            <h2>Popular Movies</h2>
+            <div class="movie-list">
+                <div class="item">
+                    <h3>Movie Title 1</h3>
+                    <p>Brief description of the movie.</p>
+                </div>
+                <div class="item">
+                    <h3>Movie Title 2</h3>
+                    <p>Brief description of the movie.</p>
+                </div>
+                <div class="item">
+                    <h3>Movie Title 3</h3>
+                    <p>Brief description of the movie.</p>
+                </div>
+            </div>
+        </section>
+        <section id="tv-shows">
+            <h2>Popular TV Shows</h2>
+            <div class="tv-list">
+                <div class="item">
+                    <h3>TV Show Title 1</h3>
+                    <p>Brief description of the TV show.</p>
+                </div>
+                <div class="item">
+                    <h3>TV Show Title 2</h3>
+                    <p>Brief description of the TV show.</p>
+                </div>
+                <div class="item">
+                    <h3>TV Show Title 3</h3>
+                    <p>Brief description of the TV show.</p>
+                </div>
+            </div>
+        </section>
+        <section id="search">
+            <h2>Search</h2>
+            <input type="text" placeholder="Search for movies or TV shows...">
+            <button>Search</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 TechFlix</p>
+    </footer>
+</body>
+</html>
